@@ -1,0 +1,624 @@
+[
+  {
+    "id": "press_banca_barra",
+    "nombre": "Press de Banca Plano con Barra",
+    "grupo_muscular": "pecho",
+    "patron_movimiento": "empuje",
+    "equipo_requerido": ["barra", "banco_plano"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "medio",
+    "articulaciones_comprometidas": ["hombro", "codo", "muñeca"],
+    "instrucciones_fijas": [
+      "Acuéstate sobre el banco con los ojos alineados debajo de la barra.",
+      "Planta firmemente los pies en el suelo y retrae las escápulas.",
+      "Agarra la barra a una anchura ligeramente mayor que la de tus hombros.",
+      "Baja la barra de forma controlada hacia la parte media/baja del esternón manteniendo los codos a unos 45-75 grados del torso.",
+      "Empuja la barra verticalmente hasta la extensión casi total de los brazos sin desclavar las escápulas."
+    ],
+    "errores_comunes": [
+      "Abrir los codos a 90 grados (estrés excesivo en el hombro).",
+      "Rebotar la barra en el pecho.",
+      "Despegar los glúteos del banco."
+    ],
+    "precauciones_seguridad": [
+      "Usar topes de seguridad o pedir ayuda de un spotter con cargas demandantes."
+    ]
+  },
+  {
+    "id": "press_plano_mancuernas",
+    "nombre": "Press de Banca Plano con Mancuernas",
+    "grupo_muscular": "pecho",
+    "patron_movimiento": "empuje",
+    "equipo_requerido": ["mancuernas", "banco_plano"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Siéntate en el banco con las mancuernas sobre los muslos y recuéstate controladamente.",
+      "Mantén retracción escapular y pies apoyados en el piso.",
+      "Baja las mancuernas a los costados del pecho sintiendo el estiramiento pectoral.",
+      "Empuja hacia arriba convergiendo suavemente sin chocar las mancuernas."
+    ],
+    "errores_comunes": [
+      "Descender demasiado rápido perdiendo tensión muscular.",
+      "Juntar bruscamente las mancuernas al final del recorrido."
+    ],
+    "precauciones_seguridad": [
+      "Soltar las mancuernas hacia los costados de forma segura si sobreviene el fallo."
+    ]
+  },
+  {
+    "id": "flexiones_suelo",
+    "nombre": "Flexiones de Pecho (Push-Ups)",
+    "grupo_muscular": "pecho",
+    "patron_movimiento": "empuje",
+    "equipo_requerido": ["peso_corporal"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "codo", "muñeca"],
+    "instrucciones_fijas": [
+      "Coloca las manos en el suelo a la anchura de los hombros formando una plancha recta con el cuerpo.",
+      "Activa abdomen y glúteos para evitar el colapso lumbar.",
+      "Desciende flexionando los codos en ángulo de flecha (45 grados) hasta rozar el suelo con el pecho.",
+      "Empuja el suelo de vuelta a la posición de plancha alta."
+    ],
+    "errores_comunes": [
+      "Dejar caer la cadera hacia el piso.",
+      "Abrir en exceso los codos."
+    ],
+    "precauciones_seguridad": [
+      "Si hay molestia en muñecas, usar apoyos neutros o mancuernas como base."
+    ]
+  },
+  {
+    "id": "aperturas_mancuernas",
+    "nombre": "Aperturas con Mancuernas en Banco Plano",
+    "grupo_muscular": "pecho",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["mancuernas", "banco_plano"],
+    "nivel_minimo": "intermedio",
+    "nivel_riesgo": "medio",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Acuéstate en el banco con las mancuernas sobre el pecho con agarre neutro.",
+      "Mantén una ligera flexión fija en los codos durante todo el ejercicio.",
+      "Abre los brazos en arco amplio hasta sentir el estiramiento en el pectoral.",
+      "Cierra contrayendo el pecho siguiendo el mismo arco."
+    ],
+    "errores_comunes": [
+      "Flexionar demasiado los codos convirtiéndolo en press.",
+      "Descender por debajo del plano del torso sobrecargando la cápsula anterior del hombro."
+    ],
+    "precauciones_seguridad": [
+      "Usar cargas moderadas controlando el rango final."
+    ]
+  },
+  {
+    "id": "press_pecho_maquina",
+    "nombre": "Press de Pecho en Máquina Guiada",
+    "grupo_muscular": "pecho",
+    "patron_movimiento": "empuje",
+    "equipo_requerido": ["maquina_pecho"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Ajusta la altura del asiento para que los agarres queden a la altura media del pecho.",
+      "Apoya firmemente la espalda contra el respaldo y retrae las escápulas.",
+      "Empuja hacia adelante extendiendo los brazos sin bloquear por completo los codos.",
+      "Regresa de forma controlada sintiendo el trabajo del pectoral."
+    ],
+    "errores_comunes": [
+      "Despegar los hombros del respaldo al final del empuje.",
+      "Asiento demasiado alto o bajo."
+    ],
+    "precauciones_seguridad": [
+      "Ajustar el tope de inicio para evitar hiperextensión articular del hombro."
+    ]
+  },
+  {
+    "id": "remo_con_barra",
+    "nombre": "Remo con Barra Inclinado (Bent-Over Row)",
+    "grupo_muscular": "espalda",
+    "patron_movimiento": "traccion",
+    "equipo_requerido": ["barra"],
+    "nivel_minimo": "intermedio",
+    "nivel_riesgo": "medio",
+    "articulaciones_comprometidas": ["lumbar", "hombro", "codo"],
+    "instrucciones_fijas": [
+      "Pies a la anchura de caderas, inclina el torso hacia adelante a unos 45 grados con la columna neutra.",
+      "Sujeta la barra con agarre prono o supino justo por fuera de las rodillas.",
+      "Tracciona la barra hacia el ombligo llevando los codos hacia atrás y apretando las escápulas.",
+      "Baja el peso de forma controlada hasta la extensión de brazos."
+    ],
+    "errores_comunes": [
+      "Curvar la espalda baja (pérdida de neutralidad espinal).",
+      "Dar tirones con el torso para subir el peso."
+    ],
+    "precauciones_seguridad": [
+      "Mantener el abdomen contraído para proteger la columna lumbar."
+    ]
+  },
+  {
+    "id": "remo_unilateral_mancuerna",
+    "nombre": "Remo Unilateral con Mancuerna (Remo Serrucho)",
+    "grupo_muscular": "espalda",
+    "patron_movimiento": "traccion",
+    "equipo_requerido": ["mancuernas", "banco_plano"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Apoya una rodilla y la mano del mismo lado sobre el banco plano.",
+      "Mantén la espalda paralela al suelo y toma la mancuerna con el brazo libre.",
+      "Lleva la mancuerna hacia la cadera conduciendo el movimiento con el codo.",
+      "Desciende controladamente sin rotar excesivamente el torso."
+    ],
+    "errores_comunes": [
+      "Rotar bruscamente el torso.",
+      "Tirar con el bíceps en lugar de iniciar con la espalda."
+    ],
+    "precauciones_seguridad": [
+      "Asegurar un apoyo estable de 3 puntos sobre el banco y suelo."
+    ]
+  },
+  {
+    "id": "dominadas_pronadas",
+    "nombre": "Dominadas Pronadas (Pull-Ups)",
+    "grupo_muscular": "espalda",
+    "patron_movimiento": "traccion",
+    "equipo_requerido": ["barra_dominadas"],
+    "nivel_minimo": "intermedio",
+    "nivel_riesgo": "medio",
+    "articulaciones_comprometidas": ["hombro", "codo", "muñeca"],
+    "instrucciones_fijas": [
+      "Cuélgate de la barra con un agarre prono más ancho que los hombros.",
+      "Inicia la tracción deprimiendo y retrayendo las escápulas.",
+      "Tira hasta que la barbilla supere la barra, manteniendo el torso firme.",
+      "Desciende lentamente hasta la posición inicial de brazos extendidos."
+    ],
+    "errores_comunes": [
+      "Balancearse o dar patadas (kipping no controlado).",
+      "Recorrido incompleto sin estirar abajo."
+    ],
+    "precauciones_seguridad": [
+      "Si la fuerza es insuficiente, usar bandas de asistencia o máquina asistida."
+    ]
+  },
+  {
+    "id": "jalon_al_pecho_polea",
+    "nombre": "Jalón al Pecho en Polea Alta (Lat Pulldown)",
+    "grupo_muscular": "espalda",
+    "patron_movimiento": "traccion",
+    "equipo_requerido": ["polea"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Siéntate y ajusta las almohadillas para muslos con firmeza.",
+      "Toma la barra ancha con agarre prono e inclina el torso levemente hacia atrás (10-15 grados).",
+      "Tira de la barra hacia la parte superior del pecho juntando las escápulas.",
+      "Extiende los brazos lentamente controlando el regreso de las placas."
+    ],
+    "errores_comunes": [
+      "Tirar la barra detrás de la nuca (peligro cervical/hombro).",
+      "Balancear el torso excesivamente hacia atrás."
+    ],
+    "precauciones_seguridad": [
+      "Tirar siempre hacia el esternón, nunca por detrás de la cabeza."
+    ]
+  },
+  {
+    "id": "remo_en_maquina",
+    "nombre": "Remo Sentado en Máquina Guiada",
+    "grupo_muscular": "espalda",
+    "patron_movimiento": "traccion",
+    "equipo_requerido": ["maquina_remo"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Ajusta el asiento para que el soporte pectoral quede a nivel medio del pecho.",
+      "Agarra las manijas y tracciona llevando los codos hacia atrás.",
+      "Aprieta la musculatura media de la espalda al final del movimiento y regresa suavemente."
+    ],
+    "errores_comunes": [
+      "Despegar el pecho del soporte.",
+      "Hombros encogidos hacia las orejas."
+    ],
+    "precauciones_seguridad": [
+      "Mantener la columna recta sin hiperextender."
+    ]
+  },
+  {
+    "id": "sentadilla_trasera_barra",
+    "nombre": "Sentadilla Trasera con Barra (Back Squat)",
+    "grupo_muscular": "cuadriceps",
+    "patron_movimiento": "dominante_rodilla",
+    "equipo_requerido": ["barra"],
+    "nivel_minimo": "intermedio",
+    "nivel_riesgo": "alto",
+    "articulaciones_comprometidas": ["rodilla", "cadera", "lumbar"],
+    "instrucciones_fijas": [
+      "Coloca la barra sobre el trapecio superior y retira la barra del rack con paso firme.",
+      "Pies al ancho de hombros con puntas ligeramente hacia afuera (15-30 grados).",
+      "Inhala, expande el abdomen y flexiona rodillas y caderas simultáneamente.",
+      "Desciende hasta que los muslos queden al menos paralelos al suelo con la espalda neutra.",
+      "Empuja con toda la planta del pie para levantarte con fuerza."
+    ],
+    "errores_comunes": [
+      "Colapso de rodillas hacia adentro (valgo de rodilla).",
+      "Redondear la espalda baja (guiño de glúteo excesivo).",
+      "Levantar los talones del suelo."
+    ],
+    "precauciones_seguridad": [
+      "Ajustar siempre las barras de seguridad del rack a la altura adecuada."
+    ]
+  },
+  {
+    "id": "sentadilla_goblet_mancuerna",
+    "nombre": "Sentadilla Goblet con Mancuerna",
+    "grupo_muscular": "cuadriceps",
+    "patron_movimiento": "dominante_rodilla",
+    "equipo_requerido": ["mancuernas"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["rodilla", "cadera"],
+    "instrucciones_fijas": [
+      "Sujeta una mancuerna verticalmente pegada al pecho con ambas manos.",
+      "Pies separados a la anchura de hombros.",
+      "Desciende manteniendo el pecho erguido y los codos pasando por dentro de las rodillas.",
+      "Pausa breve abajo y empuja el suelo para regresar."
+    ],
+    "errores_comunes": [
+      "Alejar la mancuerna del pecho.",
+      "Inclinarse excesivamente hacia adelante."
+    ],
+    "precauciones_seguridad": [
+      "Excelente para principiantes antes de progresar a sentadilla con barra."
+    ]
+  },
+  {
+    "id": "prensa_piernas_inclinada",
+    "nombre": "Prensa de Piernas 45 Grados",
+    "grupo_muscular": "cuadriceps",
+    "patron_movimiento": "dominante_rodilla",
+    "equipo_requerido": ["maquina_prensa"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["rodilla", "cadera", "lumbar"],
+    "instrucciones_fijas": [
+      "Siéntate en la máquina con la espalda baja pegada al respaldo.",
+      "Coloca los pies a la anchura de hombros en la plataforma.",
+      "Libera los seguros y desciende la plataforma flexionando rodillas a 90 grados.",
+      "Empuja la plataforma sin bloquear completamente las rodillas al final."
+    ],
+    "errores_comunes": [
+      "Bloqueo violento o hiperextensión de rodillas.",
+      "Despegar la pelvis/coxis del asiento en el fondo."
+    ],
+    "precauciones_seguridad": [
+      "No descender tanto que la pelvis se levante del respaldo para evitar lesión lumbar."
+    ]
+  },
+  {
+    "id": "extension_cuadriceps_maquina",
+    "nombre": "Extensión de Cuádriceps en Máquina",
+    "grupo_muscular": "cuadriceps",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["maquina_extensiones"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["rodilla"],
+    "instrucciones_fijas": [
+      "Ajusta el respaldo para que el eje de rotación de la máquina coincida con tus rodillas.",
+      "Almohadilla sobre la espinilla inferior, justo encima de los tobillos.",
+      "Extiende las piernas apretando los cuádriceps en la posición alta.",
+      "Baja el peso controladamente sin dejar caer las placas."
+    ],
+    "errores_comunes": [
+      "Impulsar con el torso.",
+      "Bajar sin frenar la fase excéntrica."
+    ],
+    "precauciones_seguridad": [
+      "Si hay dolor patelofemoral, limitar el rango de 90 a 45 grados."
+    ]
+  },
+  {
+    "id": "peso_muerto_rumano_barra",
+    "nombre": "Peso Muerto Rumano con Barra (RDL)",
+    "grupo_muscular": "isquiotibiales",
+    "patron_movimiento": "dominante_cadera",
+    "equipo_requerido": ["barra"],
+    "nivel_minimo": "intermedio",
+    "nivel_riesgo": "medio",
+    "articulaciones_comprometidas": ["lumbar", "cadera", "isquiotibiales"],
+    "instrucciones_fijas": [
+      "De pie, sostén la barra a la anchura de muslos con ligera flexión en rodillas.",
+      "Inicia el movimiento empujando la cadera hacia atrás manteniendo la columna neutra.",
+      "Desciende la barra rozando las piernas hasta notar tensión plena en los isquiotibiales.",
+      "Contrae glúteos e isquiotibiales para regresar la cadera a la posición inicial."
+    ],
+    "errores_comunes": [
+      "Flexionar las rodillas como sentadilla.",
+      "Curvar la columna dorsal o lumbar al bajar."
+    ],
+    "precauciones_seguridad": [
+      "Mantener la barra pegada a los muslos y tibias en todo momento."
+    ]
+  },
+  {
+    "id": "peso_muerto_rumano_mancuernas",
+    "nombre": "Peso Muerto Rumano con Mancuernas",
+    "grupo_muscular": "isquiotibiales",
+    "patron_movimiento": "dominante_cadera",
+    "equipo_requerido": ["mancuernas"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["cadera", "isquiotibiales", "lumbar"],
+    "instrucciones_fijas": [
+      "Sostén una mancuerna en cada mano frente a los muslos.",
+      "Bisagra de cadera hacia atrás con rodillas semiflexionadas y hombros hacia atrás.",
+      "Desciende las mancuernas por debajo de las rodillas sintiendo los isquiotibiales.",
+      "Extiende la cadera empujando con glúteos hacia adelante."
+    ],
+    "errores_comunes": [
+      "Mirar al techo forzando la columna cervical.",
+      "Dejar que las mancuernas se alejen del cuerpo."
+    ],
+    "precauciones_seguridad": [
+      "Detener el descenso cuando la cadera deje de viajar hacia atrás."
+    ]
+  },
+  {
+    "id": "curl_femoral_tumbado_maquina",
+    "nombre": "Curl Femoral Tumbado en Máquina (Lying Leg Curl)",
+    "grupo_muscular": "isquiotibiales",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["maquina_curl_femoral"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["rodilla"],
+    "instrucciones_fijas": [
+      "Acuéstate boca abajo con el rodillo acolchado justo por debajo de las pantorrillas.",
+      "Sujeta los agarres laterales manteniendo la pelvis fija en el banco.",
+      "Flexiona las rodillas llevando los talones hacia los glúteos.",
+      "Extiende las piernas lentamente resistiendo la carga."
+    ],
+    "errores_comunes": [
+      "Levantar las caderas del banco al flexionar.",
+      "Movimiento con rebote."
+    ],
+    "precauciones_seguridad": [
+      "Mantener la pelvis anclada al acolchado durante toda la repetición."
+    ]
+  },
+  {
+    "id": "hip_thrust_barra",
+    "nombre": "Hip Thrust con Barra en Banco",
+    "grupo_muscular": "gluteos",
+    "patron_movimiento": "dominante_cadera",
+    "equipo_requerido": ["barra", "banco_plano"],
+    "nivel_minimo": "intermedio",
+    "nivel_riesgo": "medio",
+    "articulaciones_comprometidas": ["cadera", "lumbar", "rodilla"],
+    "instrucciones_fijas": [
+      "Apoya la parte inferior de las escápulas contra el borde del banco plano.",
+      "Coloca la barra acolchada sobre el pliegue de la cadera con pies planos a 90 grados en la cima.",
+      "Empuja con los talones extendiendo la cadera hasta que el torso y muslos queden alineados.",
+      "Aprieta glúteos 1 segundo arriba y desciende con control."
+    ],
+    "errores_comunes": [
+      "Hiperextender la espalda baja en lugar de completar con la cadera.",
+      "Pies demasiado adelantados o atrasados."
+    ],
+    "precauciones_seguridad": [
+      "Usar protector o almohadilla en la barra para evitar dolor en crestas ilíacas."
+    ]
+  },
+  {
+    "id": "puente_gluteo_mancuerna",
+    "nombre": "Puente de Glúteo en Suelo con Mancuerna",
+    "grupo_muscular": "gluteos",
+    "patron_movimiento": "dominante_cadera",
+    "equipo_requerido": ["mancuernas"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["cadera"],
+    "instrucciones_fijas": [
+      "Acuéstate en el suelo boca arriba con las rodillas flexionadas y pies apoyados.",
+      "Coloca una mancuerna sobre la pelvis sujetándola con las manos.",
+      "Eleva la cadera contrayendo los glúteos hasta formar una línea recta de rodillas a hombros.",
+      "Baja lentamente rozando el suelo antes de la siguiente repetición."
+    ],
+    "errores_comunes": [
+      "Arquear la zona lumbar.",
+      "Poco rango de movimiento."
+    ],
+    "precauciones_seguridad": [
+      "Mantener la mirada hacia el frente-arriba para proteger el cuello."
+    ]
+  },
+  {
+    "id": "press_militar_mancuernas_sentado",
+    "nombre": "Press Militar con Mancuernas Sentado",
+    "grupo_muscular": "hombros",
+    "patron_movimiento": "empuje",
+    "equipo_requerido": ["mancuernas", "banco_inclinado"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Siéntate en el banco con el respaldo a unos 80-85 grados.",
+      "Sube las mancuernas a la altura de las orejas con los codos ligeramente adelantados (plano escapular).",
+      "Empuja las mancuernas verticalmente hacia arriba hasta extender los brazos.",
+      "Desciende controladamente hasta la altura de los hombros."
+    ],
+    "errores_comunes": [
+      "Abrir los codos completamente a 180 grados (choque subacromial).",
+      "Arquear excesivamente la espalda baja."
+    ],
+    "precauciones_seguridad": [
+      "Mantener el movimiento dentro del plano escapular (codos 30 grados adelantados)."
+    ]
+  },
+  {
+    "id": "elevaciones_laterales_mancuernas",
+    "nombre": "Elevaciones Laterales con Mancuernas",
+    "grupo_muscular": "hombros",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["mancuernas"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro"],
+    "instrucciones_fijas": [
+      "De pie con ligera inclinación hacia adelante y mancuernas a los costados.",
+      "Eleva los brazos hacia los lados en el plano escapular con los codos semiflexionados.",
+      "Detén el ascenso a la altura paralela de los hombros.",
+      "Baja el peso frenando la caída durante 2 segundos."
+    ],
+    "errores_comunes": [
+      "Balancear el cuerpo para elevar el peso (trampa).",
+      "Subir por encima de la línea del hombro generando pinzamiento."
+    ],
+    "precauciones_seguridad": [
+      "Usar peso ligero priorizando la técnica y la tensión constante."
+    ]
+  },
+  {
+    "id": "elevaciones_laterales_polea",
+    "nombre": "Elevaciones Laterales en Polea Baja",
+    "grupo_muscular": "hombros",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["polea"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro"],
+    "instrucciones_fijas": [
+      "Coloca la polea en la posición más baja y párate de lado a ella.",
+      "Toma el maneral con la mano contraria por detrás o delante del cuerpo.",
+      "Eleva el brazo lateralmente hasta la horizontal con tensión continua.",
+      "Desciende controlando la resistencia de la polea."
+    ],
+    "errores_comunes": [
+      "Tironear con el tronco.",
+      "Exceso de carga."
+    ],
+    "precauciones_seguridad": [
+      "Movimiento continuo sin perder la postura erguida."
+    ]
+  },
+  {
+    "id": "curl_biceps_mancuernas_alterno",
+    "nombre": "Curl de Bíceps Alterno con Mancuernas",
+    "grupo_muscular": "biceps",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["mancuernas"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["codo", "muñeca"],
+    "instrucciones_fijas": [
+      "De pie con mancuernas a los costados y palmas enfrentadas.",
+      "Flexiona un brazo girando la muñeca en supinación (palma hacia arriba) a medida que asciende.",
+      "Aprieta el bíceps en la contracción máxima y baja despacio mientras inicias con el otro brazo."
+    ],
+    "errores_comunes": [
+      "Mover los codos hacia adelante o balancear los hombros.",
+      "No completar la supinación."
+    ],
+    "precauciones_seguridad": [
+      "Codos fijos a los costados del torso."
+    ]
+  },
+  {
+    "id": "curl_biceps_barra_recta",
+    "nombre": "Curl de Bíceps con Barra",
+    "grupo_muscular": "biceps",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["barra"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["codo", "muñeca"],
+    "instrucciones_fijas": [
+      "De pie, sostén la barra con agarre supino a la anchura de hombros.",
+      "Mantén los codos fijos a los costados y flexiona los brazos llevando la barra hacia el pecho.",
+      "Desciende en 2-3 segundos hasta la extensión completa de brazos."
+    ],
+    "errores_comunes": [
+      "Arquear la espalda hacia atrás en la subida.",
+      "Despegar los codos del torso."
+    ],
+    "precauciones_seguridad": [
+      "Si molesta la muñeca con barra recta, alternar a barra EZ o mancuernas."
+    ]
+  },
+  {
+    "id": "extension_triceps_polea_alta",
+    "nombre": "Extensión de Tríceps en Polea Alta con Cuerda",
+    "grupo_muscular": "triceps",
+    "patron_movimiento": "aislamiento",
+    "equipo_requerido": ["polea"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["codo"],
+    "instrucciones_fijas": [
+      "De pie frente a la polea alta con la cuerda sujeta con agarre neutro.",
+      "Fija los codos pegados a las costillas y torso con ligera inclinación.",
+      "Extiende los codos hacia abajo separando los extremos de la cuerda al final.",
+      "Regresa hasta los 90 grados de flexión sin desplazar los codos."
+    ],
+    "errores_comunes": [
+      "Subir y bajar los codos convirtiéndolo en un jalón de espalda.",
+      "Cuerpo encorvado."
+    ],
+    "precauciones_seguridad": [
+      "Aislamiento puro: solo se mueve el antebrazo."
+    ]
+  },
+  {
+    "id": "fondos_en_banco_triceps",
+    "nombre": "Fondos de Tríceps en Banco",
+    "grupo_muscular": "triceps",
+    "patron_movimiento": "empuje",
+    "equipo_requerido": ["banco_plano", "peso_corporal"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "medio",
+    "articulaciones_comprometidas": ["hombro", "codo"],
+    "instrucciones_fijas": [
+      "Apoya las manos en el borde del banco plano con los dedos hacia adelante.",
+      "Extiende las piernas hacia el frente con los talones apoyados en el suelo.",
+      "Desciende la cadera rozando el banco flexionando los codos hasta 90 grados.",
+      "Empuja con las palmas para extender los brazos."
+    ],
+    "errores_comunes": [
+      "Separar la espalda del banco sobrecargando el hombro anterior.",
+      "Bajar más allá de los 90 grados."
+    ],
+    "precauciones_seguridad": [
+      "Evitar si existe historial de dolor o inestabilidad anterior de hombro."
+    ]
+  },
+  {
+    "id": "plancha_abdominal_isometrica",
+    "nombre": "Plancha Abdominal Isométrica (Forearm Plank)",
+    "grupo_muscular": "core",
+    "patron_movimiento": "core",
+    "equipo_requerido": ["peso_corporal"],
+    "nivel_minimo": "principiante",
+    "nivel_riesgo": "bajo",
+    "articulaciones_comprometidas": ["hombro", "columna"],
+    "instrucciones_fijas": [
+      "Colócate boca abajo apoyando los antebrazos y las puntas de los pies en el suelo.",
+      "Alinea los codos directamente debajo de los hombros.",
+      "Activa fuertemente el abdomen, glúteos y cuádriceps formando una línea recta.",
+      "Mantén la respiración fluida sosteniendo la posición estable."
+    ],
+    "errores_comunes": [
+      "Hundir la pelvis hacia el suelo.",
+      "Elevar los glúteos en forma de pirámide."
+    ],
+    "precauciones_seguridad": [
+      "Interrumpir si se siente carga o tensión punzante en la zona lumbar."
+    ]
+  }
+]

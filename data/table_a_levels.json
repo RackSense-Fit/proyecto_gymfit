@@ -1,0 +1,67 @@
+{
+  "principiante": {
+    "nivel": "principiante",
+    "rango_series_por_ejercicio": [
+      2,
+      3
+    ],
+    "rango_repeticiones": [
+      10,
+      15
+    ],
+    "descanso_segundos": 150,
+    "progresion_carga_semanal_pct": 2.5,
+    "precauciones_generales": [
+      "Priorizar aprendizaje técnico y control neuromuscular sobre la carga.",
+      "Evitar llegar al fallo muscular concéntrico (RIR 3-4 sugerido).",
+      "Calentamiento articular dinámico previo obligatorio."
+    ],
+    "ejercicios_restringidos_ids": [
+      "snatch_olimpico",
+      "clean_and_jerk",
+      "peso_muerto_rumano_unilateral_mancuerna_pesada",
+      "press_militar_trasnuca"
+    ],
+    "enfoque_principal": "Adaptación anatómica, hipertrofia básica y control motor"
+  },
+  "intermedio": {
+    "nivel": "intermedio",
+    "rango_series_por_ejercicio": [
+      3,
+      4
+    ],
+    "rango_repeticiones": [
+      8,
+      12
+    ],
+    "descanso_segundos": 150,
+    "progresion_carga_semanal_pct": 5.0,
+    "precauciones_generales": [
+      "Mantener RIR 1-2 en ejercicios compuestos.",
+      "Vigilar la fatiga acumulada en la articulación del hombro y zona lumbar."
+    ],
+    "ejercicios_restringidos_ids": [
+      "press_militar_trasnuca"
+    ],
+    "enfoque_principal": "Sobrecarga progresiva, hipertrofia y ganancia de fuerza específica"
+  },
+  "avanzado": {
+    "nivel": "avanzado",
+    "rango_series_por_ejercicio": [
+      4,
+      6
+    ],
+    "rango_repeticiones": [
+      6,
+      12
+    ],
+    "descanso_segundos": 180,
+    "progresion_carga_semanal_pct": 5.0,
+    "precauciones_generales": [
+      "Implementar periodización ondulante o bloques de descarga.",
+      "Gestión estricta de fatiga del sistema nervioso central."
+    ],
+    "ejercicios_restringidos_ids": [],
+    "enfoque_principal": "Optimización del rendimiento, intensificación y especialización muscular"
+  }
+}

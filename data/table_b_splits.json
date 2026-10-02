@@ -1,0 +1,142 @@
+{
+  "fullbody_2dias": {
+    "id": "fullbody_2dias",
+    "nombre": "Rutina Fullbody de 2 Días",
+    "dias_semana": 2,
+    "descripcion": "Ideal para personas con poco tiempo o principiantes absolutos.",
+    "distribucion": [
+      {
+        "dia_numero": 1,
+        "nombre_dia": "Fullbody A",
+        "grupos_objetivo": ["pecho", "espalda", "cuadriceps", "core"]
+      },
+      {
+        "dia_numero": 2,
+        "nombre_dia": "Fullbody B",
+        "grupos_objetivo": ["hombros", "espalda", "isquiotibiales", "biceps", "triceps"]
+      }
+    ]
+  },
+  "fullbody_3dias": {
+    "id": "fullbody_3dias",
+    "nombre": "Rutina Fullbody Clásica de 3 Días",
+    "dias_semana": 3,
+    "descripcion": "Frecuencia ideal para optimizar estímulo muscular y recuperación.",
+    "distribucion": [
+      {
+        "dia_numero": 1,
+        "nombre_dia": "Fullbody A (Enfoque Empuje/Cuádriceps)",
+        "grupos_objetivo": ["pecho", "cuadriceps", "espalda", "hombros", "core"]
+      },
+      {
+        "dia_numero": 2,
+        "nombre_dia": "Fullbody B (Enfoque Tracción/Cadera)",
+        "grupos_objetivo": ["espalda", "isquiotibiales", "pecho", "biceps", "triceps"]
+      },
+      {
+        "dia_numero": 3,
+        "nombre_dia": "Fullbody C (Estímulo Global)",
+        "grupos_objetivo": ["gluteos", "cuadriceps", "hombros", "espalda", "core"]
+      }
+    ]
+  },
+  "upper_lower_4dias": {
+    "id": "upper_lower_4dias",
+    "nombre": "División Torso / Pierna de 4 Días (Upper / Lower)",
+    "dias_semana": 4,
+    "descripcion": "Excelente balance de volumen e intensidad para niveles intermedios y avanzados.",
+    "distribucion": [
+      {
+        "dia_numero": 1,
+        "nombre_dia": "Torso / Upper A",
+        "grupos_objetivo": ["pecho", "espalda", "hombros", "triceps", "biceps"]
+      },
+      {
+        "dia_numero": 2,
+        "nombre_dia": "Pierna / Lower A",
+        "grupos_objetivo": ["cuadriceps", "isquiotibiales", "gluteos", "core"]
+      },
+      {
+        "dia_numero": 3,
+        "nombre_dia": "Torso / Upper B",
+        "grupos_objetivo": ["espalda", "pecho", "hombros", "biceps", "triceps"]
+      },
+      {
+        "dia_numero": 4,
+        "nombre_dia": "Pierna / Lower B",
+        "grupos_objetivo": ["isquiotibiales", "cuadriceps", "gluteos", "core"]
+      }
+    ]
+  },
+  "push_pull_legs_5dias": {
+    "id": "push_pull_legs_5dias",
+    "nombre": "División Empuje / Tracción / Pierna de 5 Días (PPL + Upper/Lower)",
+    "dias_semana": 5,
+    "descripcion": "Especialización de volumen muscular para intermedios y avanzados.",
+    "distribucion": [
+      {
+        "dia_numero": 1,
+        "nombre_dia": "Empuje (Push)",
+        "grupos_objetivo": ["pecho", "hombros", "triceps"]
+      },
+      {
+        "dia_numero": 2,
+        "nombre_dia": "Tracción (Pull)",
+        "grupos_objetivo": ["espalda", "biceps", "core"]
+      },
+      {
+        "dia_numero": 3,
+        "nombre_dia": "Pierna (Legs)",
+        "grupos_objetivo": ["cuadriceps", "isquiotibiales", "gluteos"]
+      },
+      {
+        "dia_numero": 4,
+        "nombre_dia": "Torso (Upper)",
+        "grupos_objetivo": ["pecho", "espalda", "hombros"]
+      },
+      {
+        "dia_numero": 5,
+        "nombre_dia": "Pierna y Brazos",
+        "grupos_objetivo": ["cuadriceps", "isquiotibiales", "biceps", "triceps"]
+      }
+    ]
+  },
+  "push_pull_legs_6dias": {
+    "id": "push_pull_legs_6dias",
+    "nombre": "División Empuje / Tracción / Pierna de 6 Días (PPL x 2)",
+    "dias_semana": 6,
+    "descripcion": "Máxima frecuencia y volumen para usuarios experimentados.",
+    "distribucion": [
+      {
+        "dia_numero": 1,
+        "nombre_dia": "Empuje A (Push A)",
+        "grupos_objetivo": ["pecho", "hombros", "triceps"]
+      },
+      {
+        "dia_numero": 2,
+        "nombre_dia": "Tracción A (Pull A)",
+        "grupos_objetivo": ["espalda", "biceps", "core"]
+      },
+      {
+        "dia_numero": 3,
+        "nombre_dia": "Pierna A (Legs A)",
+        "grupos_objetivo": ["cuadriceps", "isquiotibiales", "gluteos"]
+      },
+      {
+        "dia_numero": 4,
+        "nombre_dia": "Empuje B (Push B)",
+        "grupos_objetivo": ["pecho", "hombros", "triceps"]
+      },
+      {
+        "dia_numero": 5,
+        "nombre_dia": "Tracción B (Pull B)",
+        "grupos_objetivo": ["espalda", "biceps", "core"]
+      },
+      {
+        "dia_numero": 6,
+        "nombre_dia": "Pierna B (Legs B)",
+        "grupos_objetivo": ["cuadriceps", "isquiotibiales", "gluteos"]
+      }
+    ]
+  }
+}
