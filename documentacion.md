@@ -90,7 +90,7 @@ El sistema distingue estrictamente entre hechos del mundo y reglas dependientes 
 Basado en consensos de la ACSM (*American College of Sports Medicine*) y la NSCA (*National Strength and Conditioning Association*):
 - **Principiante:** 2-3 series, 10-15 repeticiones, 90s descanso, 2.5% progresión semanal, restricción de levantamientos de alta complejidad técnica (snatch, trasnuca).
 - **Intermedio:** 3-4 series, 8-12 repeticiones, 120s descanso, 5.0% progresión semanal.
-- **Avanzado:** 4-5 series, 6-10 repeticiones, 150s descanso, alta densidad e intensificación.
+- **Avanzado:** 3-4 series, 6-10 repeticiones, 150s descanso, alta densidad e intensificación.
 
 ### Tabla B — Ejercicios y Splits (`data/table_b_exercises.json` y `data/table_b_splits.json`)
 - **Ejercicios:** Nombre, grupo muscular, patrón de movimiento, equipo requerido (`frozenset`), nivel mínimo, nivel de riesgo, articulaciones comprometidas, técnica fija inmutable, errores comunes y precauciones.
