@@ -1,7 +1,7 @@
 # Bitácora de Desarrollo — Proyecto IA Agéntica (GymFit Agent)
 
 Registro continuo de requerimientos, diseño arquitectónico, eventos, decisiones técnicas y avances de implementación del proyecto **GymFit Agent** para la materia de Programación Funcional.
-
+otros
 ---
 
 ## [2026-09-17 12:08:59] - Creación e Inicialización de la Bitácora de Proyecto IA Agéntica
