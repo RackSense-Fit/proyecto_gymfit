@@ -228,3 +228,15 @@ python -m pytest tests/ -v
 1. **Visión Computacional para Detección de Equipo:** Incorporación de modelos multimodales (ej. Gemini Vision / YOLO) para reconocer automáticamente máquinas, mancuernas y accesorios a partir de fotografías tomadas en el gimnasio.
 2. **Aplicación Móvil:** Desarrollo de cliente multiplataforma (React Native / Flutter) que consuma la API REST para el registro offline en sala de pesas.
 3. **Módulo de Nutrición Agéntica:** Expansión del agente para vincular el gasto calórico de la rutina generada con planes de alimentación y ajuste dinámico de macronutrientes.
+
+
+## Datos externos
+
+El catálogo de ejercicios se construye a partir de
+[Free Exercise DB](https://github.com/yuhonas/free-exercise-db),
+un dataset de dominio público (Unlicense). No se incluye en este
+repositorio por su tamaño (cientos de imágenes).
+
+Para reproducir el proyecto, clónalo en la ruta esperada:
+
+    git clone https://github.com/yuhonas/free-exercise-db data/external/free-exercise-db
