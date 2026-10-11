@@ -1,0 +1,5 @@
+﻿data/external/free-exercise-db/
+__pycache__/
+*.pyc
+.venv/
+.env
