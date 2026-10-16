@@ -588,4 +588,56 @@ Ambas son **ajenas a nuestro código** y se resolverán actualizando las depende
 
 
 
+
 ---
+
+## [2026-10-15 16:35:31] - Base del Módulo de Visión: Detector Local de Personas (`personDetector.js`)
+
+**Prompt / Solicitud del Usuario:**
+> *"Prepara la base de un detector local de personas para fotos de equipo de gimnasio. No descargues librerías ni modelos, no crees la página y no toques el dashboard, el reducer, el generador, el adjuster ni la API de rutinas. 1. Revisa cómo FastAPI sirve hoy el frontend... 2. Crea la función pura decidirSiHayPersona(detecciones, umbral)... 3. Tests con detecciones simuladas... 4. Confirma que los tests existentes de Python siguen pasando..."*
+
+### Lista de Tareas
+- [x] **Punto 1:** Auditar `src/api/app.py` — cómo FastAPI sirve el frontend.
+- [x] **Punto 2:** Crear `src/vision/personDetector.js` con la función pura `decidirSiHayPersona()`.
+- [x] **Punto 3:** Crear `tests/js/personDetector.test.js` con 9 tests usando `node --test` (built-in, sin librerías externas).
+- [x] **Punto 4:** Confirmar que los 14 tests de Python siguen pasando.
+- [x] **Punto 5:** Reporte completo generado.
+
+### Hallazgos — Punto 1: Cómo FastAPI sirve el frontend
+
+`src/api/app.py` sirve el dashboard mediante **HTML embebido en Python** (no archivos estáticos):
+- **No hay `StaticFiles` montado** (`app.mount("/static", ...)` no existe).
+- **No hay carpeta `static/`** en el proyecto.
+- El dashboard completo está en `src/api/dashboard_html.py` como una string `DASHBOARD_HTML` que se devuelve directamente con `HTMLResponse`.
+- Rutas actuales: `GET /` y `GET /dashboard` devuelven el mismo HTML; `GET /health` devuelve JSON.
+- **Implicación para el módulo de visión:** Cuando se integre en el dashboard, el JS del detector deberá estar embebido en esa string, o se deberá añadir un montaje de `StaticFiles` para servir `src/vision/personDetector.js` como archivo separado.
+
+### Detalle de lo Realizado — Puntos 2 y 3:
+
+#### Archivos creados:
+1. **[`src/vision/personDetector.js`](file:///c:/Users/fred_/OneDrive/Documentos/Ing.%20en%20Computación%20Inteligente/Tercer%20Semestre%20ICI/proyecto_ia_agentica/src/vision/personDetector.js)** — Función pura sin efectos secundarios:
+   - `CLASE_PERSONA = "person"` — constante nombrada.
+   - `UMBRAL_DEFAULT = 0.40` — umbral configurable, sin números mágicos.
+   - `decidirSiHayPersona(detecciones, umbral = UMBRAL_DEFAULT)` → `{hayPersona: boolean, maxScore: number}`.
+   - CommonJS (`module.exports`) para compatibilidad directa con `node --test`.
+
+2. **[`tests/js/personDetector.test.js`](file:///c:/Users/fred_/OneDrive/Documentos/Ing.%20en%20Computación%20Inteligente/Tercer%20Semestre%20ICI/proyecto_ia_agentica/tests/js/personDetector.test.js)** — 9 tests cubriendo:
+   - Persona con score alto ✔
+   - Persona con score bajo (< umbral) ✔
+   - Score exactamente igual al umbral (`>=`) ✔
+   - Lista vacía ✔
+   - Solo otras clases (mancuerna, kettlebell) ✔
+   - Múltiples personas (maxScore correcto) ✔
+   - Mezcla de válida + inválida + otra clase ✔
+   - Umbral personalizado alto (0.95) ✔
+   - Umbral personalizado bajo (0.10) ✔
+
+### Resultados de Tests:
+
+| Suite | Herramienta | Resultado |
+|-------|-------------|-----------|
+| JS: `personDetector.test.js` | `node --test` (v24.22.0) | **9/9 ✅** |
+| Python: `tests/` | `pytest` (Python 3.14.7) | **14/14 ✅** |
+
+---
+
