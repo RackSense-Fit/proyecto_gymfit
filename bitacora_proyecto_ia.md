@@ -641,3 +641,44 @@ Ambas son **ajenas a nuestro código** y se resolverán actualizando las depende
 
 ---
 
+## [2026-10-15 23:10:00] - Montaje de `/static` en FastAPI y Alojamiento Local de Vendor (`tf.min.js`, `coco-ssd`, pesos)
+
+**Prompt / Solicitud del Usuario:**
+> *"2. Crea la carpeta src/api/static/ y móntala en FastAPI como /static (hoy no existe ningún montaje). Guarda las librerías y los pesos del modelo en src/api/static/vendor/. NO uses la ruta /static para imágenes de ejercicios: esas irán después en /exercise-images/. No modifiques dashboard_html.py. Verifica que cada archivo responde 200 y que la app arranca igual si la carpeta está vacía."*
+
+### Lista de Tareas
+- [x] **Punto 1:** Crear la estructura de carpetas `src/api/static/vendor/`.
+- [x] **Punto 2:** Descargar y almacenar localmente librerías JS (`tf.min.js`, `coco-ssd.min.js`) y pesos completos del modelo (`ssdlite_mobilenet_v2`: `model.json` y los 5 shards binarios) en `src/api/static/vendor/`.
+- [x] **Punto 3:** Montar `/static` en FastAPI usando `StaticFiles` en `src/api/app.py`, garantizando auto-creación del directorio si no existiera.
+- [x] **Punto 4:** Respetar la restricción estricta de no modificar `dashboard_html.py` ni usar `/static` para imágenes de ejercicios.
+- [x] **Punto 5:** Crear tests automatizados en `tests/test_api.py` para verificar que cada archivo estático responde HTTP 200 con contenido.
+- [x] **Punto 6:** Crear test automatizado para verificar que la aplicación arranca de forma limpia y funcional si la carpeta estática está vacía (o no existe).
+- [x] **Punto 7:** Ejecutar suites completas de pruebas (Python `pytest` y JS `node --test`).
+
+### Detalle de lo Realizado:
+
+1. **Estructura y Archivos Vendor Almacenados en [`src/api/static/vendor/`](file:///c:/Users/fred_/OneDrive/Documentos/Ing.%20en%20Computación%20Inteligente/Tercer%20Semestre%20ICI/proyecto_ia_agentica/src/api/static/vendor/):**
+   - `tf.min.js`: TensorFlow.js (1.47 MB).
+   - `coco-ssd.min.js`: Envoltura cliente COCO-SSD (9.3 KB).
+   - `model.json`: Manifiesto y grafo del modelo SSD MobileNet V2 (527 KB).
+   - `group1-shard1of5` a `group1-shard5of5`: Shards binarios de pesos (17.7 MB en total).
+   - `README.md`: Documentación interna indicando que no deben colocarse imágenes de ejercicios aquí.
+
+2. **Montaje en FastAPI en [`src/api/app.py`](file:///c:/Users/fred_/OneDrive/Documentos/Ing.%20en%20Computación%20Inteligente/Tercer%20Semestre%20ICI/proyecto_ia_agentica/src/api/app.py):**
+   - Se añadió `from fastapi.staticfiles import StaticFiles` y `from pathlib import Path`.
+   - Se agregó el parámetro opcional `static_dir: Path | None = None` a la fábrica `create_app()` para permitir inyección de dependencias funcional durante tests.
+   - Se asegura la creación del directorio con `mkdir(parents=True, exist_ok=True)` y se monta en `app.mount("/static", StaticFiles(...), name="static")`.
+   - `dashboard_html.py` no fue modificado en absoluto.
+
+3. **Pruebas Automatizadas en [`tests/test_api.py`](file:///c:/Users/fred_/OneDrive/Documentos/Ing.%20en%20Computación%20Inteligente/Tercer%20Semestre%20ICI/proyecto_ia_agentica/tests/test_api.py):**
+   - `test_static_vendor_files_respond_200`: Realiza peticiones GET a cada uno de los 9 archivos en `/static/vendor/` verificando `status_code == 200` y longitud mayor a 0 bytes.
+   - `test_app_starts_with_empty_static_directory`: Crea una instancia de la aplicación apuntando a un directorio temporal completamente vacío, comprobando que la app inicializa sin errores, responde 200 en `/health` y `/`, y devuelve 404 seguro en rutas estáticas no encontradas sin crashear el servidor.
+
+### Resultados de Tests:
+
+| Suite | Comando | Resultado |
+|-------|---------|-----------|
+| **Python API & Core** | `pytest tests/ -v` | **16/16 PASSED ✅** |
+| **JS Visión** | `node --test tests/js/personDetector.test.js` | **9/9 PASSED ✅** |
+
+---

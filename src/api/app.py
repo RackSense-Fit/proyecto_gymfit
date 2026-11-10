@@ -2,9 +2,12 @@
 Aplicación principal de FastAPI para GymFit Agent.
 Expone el núcleo funcional como servicios web REST con documentación OpenAPI y Dashboard Interactivo.
 """
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from src.api.dashboard_html import DASHBOARD_HTML
 from src.api.routers.equipment import router as equipment_router
 from src.api.routers.events import router as events_router
@@ -14,7 +17,7 @@ from src.api.routers.session import router as session_router
 from src.api.routers.variability import router as variability_router
 
 
-def create_app() -> FastAPI:
+def create_app(static_dir: Path | None = None) -> FastAPI:
     """Fábrica pura para crear y configurar la aplicación FastAPI."""
     app = FastAPI(
         title="GymFit Agent API",
@@ -36,6 +39,11 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    # Montar archivos estáticos (/static) garantizando existencia del directorio
+    resolved_static_dir = static_dir or (Path(__file__).resolve().parent / "static")
+    resolved_static_dir.mkdir(parents=True, exist_ok=True)
+    app.mount("/static", StaticFiles(directory=str(resolved_static_dir)), name="static")
 
     # Registrar enrutadores modulares
     app.include_router(profile_router)

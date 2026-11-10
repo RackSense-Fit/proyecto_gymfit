@@ -136,6 +136,56 @@ class TestFastAPIIntegration(unittest.TestCase):
         self.assertEqual(res_events.status_code, 200)
         self.assertGreaterEqual(res_events.json()["total_eventos"], 6)
 
+    def test_static_vendor_files_respond_200(self) -> None:
+        """Verifica que cada archivo en /static/vendor/ responda con código HTTP 200."""
+        vendor_files = [
+            "tf.min.js",
+            "coco-ssd.min.js",
+            "model.json",
+            "group1-shard1of5",
+            "group1-shard2of5",
+            "group1-shard3of5",
+            "group1-shard4of5",
+            "group1-shard5of5",
+            "README.md",
+        ]
+        for filename in vendor_files:
+            resp = self.client.get(f"/static/vendor/{filename}")
+            self.assertEqual(
+                resp.status_code,
+                200,
+                f"El archivo /static/vendor/{filename} no respondió 200 (obtenido: {resp.status_code})",
+            )
+            self.assertGreater(
+                len(resp.content),
+                0,
+                f"El archivo /static/vendor/{filename} se encuentra vacío",
+            )
+
+    def test_app_starts_with_empty_static_directory(self) -> None:
+        """Verifica que la app arranque igual sin errores si la carpeta static está vacía o no existe."""
+        import tempfile
+        from pathlib import Path
+        from src.api.app import create_app
+
+        with tempfile.TemporaryDirectory() as empty_dir:
+            empty_path = Path(empty_dir) / "empty_static"
+            # No creamos previamente empty_path para probar que create_app la crea y arranca sin error
+            test_app = create_app(static_dir=empty_path)
+            test_client = TestClient(test_app)
+
+            # Verificar que las rutas clave siguen respondiendo 200
+            res_health = test_client.get("/health")
+            self.assertEqual(res_health.status_code, 200)
+            self.assertEqual(res_health.json()["status"], "healthy")
+
+            res_root = test_client.get("/")
+            self.assertEqual(res_root.status_code, 200)
+
+            # La carpeta estática vacía responde 404 al buscar un recurso inexistente sin crashear
+            res_static = test_client.get("/static/vendor/inexistente.js")
+            self.assertEqual(res_static.status_code, 404)
+
 
 if __name__ == "__main__":
     unittest.main()
