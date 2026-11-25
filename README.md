@@ -86,23 +86,47 @@ proyecto_ia_agentica/
 │   │   └── history_fold.py        # Reconstructor de estado por pliegue de eventos (Fold)
 │   │
 │   └── api/                       # Capa web y servicios REST (FastAPI)
-│       ├── app.py                 # Aplicación FastAPI y montaje de rutas
+│       ├── app.py                 # Aplicación FastAPI, montaje estático y FileResponse (/ y /dashboard)
 │       ├── state_manager.py       # Gestor en memoria del ciclo de vida del estado
 │       ├── schemas.py             # Esquemas Pydantic V2 para request/response de la API
-│       ├── dashboard_html.py      # Interfaz visual interactiva web SPA (HTML5/Vanilla CSS/JS)
-│       └── routers/               # Controladores modulares por entidad
-│           ├── profile.py         # Endpoints de creación y consulta de perfil
-│           ├── equipment.py       # Endpoints de registro y actualización de equipo
-│           ├── routine.py         # Endpoints de generación y consulta de rutina activa
-│           ├── session.py         # Endpoints de inicio, registro de series y fin de sesión
-│           ├── variability.py     # Endpoints de reporte de molestias, imprevistos y dificultad
-│           └── events.py          # Endpoints de historial de eventos y reconstrucción por fold
+│       ├── routers/               # Controladores modulares por entidad
+│       │   ├── profile.py         # Endpoints de creación y consulta de perfil
+│       │   ├── equipment.py       # Endpoints de registro y actualización de equipo
+│       │   ├── routine.py         # Endpoints de generación y consulta de rutina activa
+│       │   ├── session.py         # Endpoints de inicio, registro de series y fin de sesión
+│       │   ├── variability.py     # Endpoints de reporte de molestias, imprevistos y dificultad
+│       │   └── events.py          # Endpoints de historial de eventos y reconstrucción por fold
+│       └── static/                # Frontend desacoplado servido estáticamente
+│           ├── index.html         # HTML estructural del dashboard interactivo
+│           ├── css/
+│           │   └── styles.css     # Estilos CSS, variables de diseño, dark mode y media queries
+│           ├── js/                # JavaScript modular dividido por sección
+│           │   ├── equipo.js      # Selección y chips de equipamiento
+│           │   ├── cronometro.js  # Temporizador de descanso
+│           │   ├── perfil.js      # Captura y envío de perfil
+│           │   ├── rutina.js      # Generación de rutina y ajustes de variabilidad
+│           │   └── eventos.js     # Estado reactivo, logs de eventos e inicialización
+│           └── vendor/            # Modelos y pesos locales para visión por computadora
+│               ├── tf.min.js      # TensorFlow.js v4.22.0 local
+│               ├── coco-ssd.min.js# Envoltura COCO-SSD v2.2.3 local
+│               ├── model.json     # Grafo del modelo SSDLite MobileNet V2
+│               └── group1-shard*  # Shards binarios de pesos (1 a 5)
 │
 └── tests/                         # Suite de pruebas automatizadas con pytest
     ├── test_filters.py            # Pruebas de filtrado por equipo, nivel y articulaciones
     ├── test_generator.py          # Pruebas del generador de rutinas y selección de splits
     ├── test_reducer.py            # Pruebas de inmutabilidad, ciclo de sesión y fold_events
-    └── test_api.py                # Pruebas de integración de la API REST y endpoints FastAPI
+    ├── test_api.py                # Pruebas de integración de la API REST, seguridad y estáticos
+    └── js/                        # Pruebas de JavaScript (node --test)
+        └── personDetector.test.js # Pruebas unitarias de visión pura
+
+---
+
+### 3.1. Separación Arquitectónica: Backend, Frontend y Contrato `/api`
+
+* **Backend (`src/api/` y núcleo funcional):** Servicios web con FastAPI (`app.py`, routers modulares en `routers/`, schemas Pydantic y `state_manager.py`). Implementa el núcleo funcional determinista (`models/`, `catalog/`, `engine/`, `reducer/`, `vision/`). El backend está 100% desacoplado de la presentación y no importa ningún módulo del frontend.
+* **Frontend (`src/api/static/`):** Capa visual e interactiva construida con tecnologías web puras (HTML5 semántico, CSS3 con diseño responsivo móvil y JavaScript modular dividido por responsabilidades en `equipo.js`, `cronometro.js`, `perfil.js`, `rutina.js` y `eventos.js`).
+* **Contrato de Comunicación:** El frontend consume el backend **únicamente a través de rutas relativas bajo `/api/...`** (`/api/profile`, `/api/equipment`, `/api/routine/generate`, `/api/adjustments/*`, `/api/state`, `/api/state/events`, etc.). No existe ninguna URL fija a `localhost` o `127.0.0.1`, permitiendo que el sistema funcione transparentemente en cualquier host, puerto o entorno de red local (como el acceso desde dispositivos móviles en la misma LAN). Las rutas raíz `GET /` y `GET /dashboard` sirven `index.html` mediante `FileResponse`.
 ```
 
 ---
@@ -240,3 +264,7 @@ repositorio por su tamaño (cientos de imágenes).
 Para reproducir el proyecto, clónalo en la ruta esperada:
 
     git clone https://github.com/yuhonas/free-exercise-db data/external/free-exercise-db
+
+*Cosas a considerar:
+- Evitar hardcorear
+- 

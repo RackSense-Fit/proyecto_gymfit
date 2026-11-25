@@ -2,5 +2,8 @@
 echo ========================================================
 echo Ejecutando Suite de Pruebas Unitarias e Integracion
 echo ========================================================
-python -m unittest discover -s tests -v
+if exist .venv\Scripts\activate.bat (
+    call .venv\Scripts\activate.bat
+)
+python -m pytest -v
 pause

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificación de Carga Local - COCO-SSD</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 40px auto;
+      max-width: 720px;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #1e293b;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #0f172a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+      font-size: 1.5rem;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    #status {
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin: 12px 0;
+      padding: 12px 16px;
+      border-radius: 6px;
+    }
+    .loading {
+      background-color: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .success {
+      background-color: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    .error {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+    #time {
+      font-size: 1rem;
+      color: #334155;
+      font-weight: 500;
+      margin: 8px 0;
+    }
+    #details {
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-top: 12px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .checklist {
+      background-color: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-size: 0.95rem;
+    }
+    .checklist h2 {
+      font-size: 1.05rem;
+      margin-top: 0;
+      color: #1e40af;
+    }
+    .checklist ol {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+    .checklist li {
+      margin-bottom: 6px;
+    }
+  </style>
+
+  <!-- Bibliotecas JS servidas localmente desde FastAPI -->
+  <script src="/static/vendor/tf.min.js"></script>
+  <script src="/static/vendor/coco-ssd.min.js"></script>
+</head>
+<body>
+  <h1>Verificación de Carga Local del Modelo COCO-SSD</h1>
+  
+  <div class="card">
+    <div><strong>Estado del Modelo:</strong></div>
+    <div id="status" class="loading">Iniciando carga de pesos desde /static/vendor/model.json...</div>
+    <div id="time">Tiempo: Calculando...</div>
+    <div id="details">Esperando inicialización...</div>
+  </div>
+
+  <div class="checklist">
+    <h2>¿Qué debes revisar en DevTools (Pestaña Network)?</h2>
+    <ol>
+      <li><strong>Filtro All o Fetch/XHR:</strong> Verifica que todas las peticiones apunten únicamente al origen local (<code>/static/vendor/...</code>).</li>
+      <li><strong>Archivos cargados en la cascada:</strong>
+        <code>tf.min.js</code>, <code>coco-ssd.min.js</code>, <code>model.json</code> y los 5 shards binarios (<code>group1-shard1of5</code> a <code>group1-shard5of5</code>).</li>
+      <li><strong>Cero peticiones externas:</strong> La columna <em>Domain</em> / <em>Host</em> no debe contener <code>storage.googleapis.com</code>, <code>jsdelivr.net</code>, <code>unpkg.com</code> ni ningún otro dominio externo.</li>
+      <li><strong>Prueba sin conexión (Offline):</strong> Puedes seleccionar el perfil <em>Offline</em> en el selector de red de DevTools (o desconectar internet de tu PC) y recargar; el modelo cargará exitosamente 100% en local.</li>
+    </ol>
+  </div>
+
+  <script>
+    async function verifyModelLoad() {
+      const statusEl = document.getElementById("status");
+      const timeEl = document.getElementById("time");
+      const detailsEl = document.getElementById("details");
+      const startTime = performance.now();
+
+      try {
+        statusEl.textContent = "Cargando grafo y pesos locales (/static/vendor/model.json)...";
+        statusEl.className = "loading";
+
+        // Carga explícita apuntando a la ruta local
+        const model = await cocoSsd.load({
+          modelUrl: "/static/vendor/model.json"
+        });
+
+        const elapsedMs = performance.now() - startTime;
+        statusEl.textContent = "✓ Modelo COCO-SSD cargado exitosamente en local";
+        statusEl.className = "success";
+        timeEl.textContent = `Tiempo de carga total: ${elapsedMs.toFixed(1)} ms (${(elapsedMs / 1000).toFixed(2)} s)`;
+
+        const tfVersion = (window.tf && window.tf.version && window.tf.version.tfjs) ? window.tf.version.tfjs : "detectada";
+        const backend = (window.tf && window.tf.getBackend) ? window.tf.getBackend() : "no disponible";
+        detailsEl.textContent = `TensorFlow.js versión: ${tfVersion}\nBackend activo: ${backend}\nBase: lite_mobilenet_v2\nModelo cargado: SSDLite MobileNet V2 (100% offline)`;
+      } catch (err) {
+        const elapsedMs = performance.now() - startTime;
+        statusEl.textContent = "✗ Error al cargar el modelo local: " + err.message;
+        statusEl.className = "error";
+        timeEl.textContent = `Tiempo transcurrido hasta fallo: ${elapsedMs.toFixed(1)} ms`;
+        detailsEl.textContent = String(err && err.stack ? err.stack : err);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", verifyModelLoad);
+  </script>
+</body>
+</html>
+

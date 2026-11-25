@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymFit Agent — Dashboard Interactivo</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-title">
+            <h2>🏋️‍♂️ GymFit Agent</h2>
+            <span class="badge" id="apiStatus">🟢 API Online</span>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary" onclick="seedDemoData()">⚡ Cargar Caso Demo</button>
+            <button class="btn btn-secondary" onclick="resetState()">🔄 Reiniciar Estado</button>
+            <a href="/docs" target="_blank" class="btn" style="text-decoration: none;">📖 Ver Swagger Docs</a>
+        </div>
+    </header>
+
+    <div class="grid-2">
+        <!-- Panel 1: Perfil y Equipo -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1. Perfil del Atleta y Equipo</div>
+                <button class="btn" style="padding: 6px 12px;" onclick="saveProfileAndEquipment()">Guardar</button>
+            </div>
+
+            <div class="form-row-2">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="nombre" value="Carlos Mendoza">
+                </div>
+                <div class="form-group">
+                    <label>Sexo</label>
+                    <select id="sexo">
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row-3">
+                <div class="form-group">
+                    <label>Peso (kg)</label>
+                    <input type="number" id="peso" value="76.0" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label>Altura (cm)</label>
+                    <input type="number" id="altura" value="178.0">
+                </div>
+                <div class="form-group">
+                    <label>Días / Sem</label>
+                    <input type="number" id="dias" value="3" min="1" max="7">
+                </div>
+            </div>
+
+            <div class="form-row-2">
+                <div class="form-group">
+                    <label>Objetivo</label>
+                    <select id="objetivo">
+                        <option value="ganar_musculo">Ganar Músculo</option>
+                        <option value="bajar_grasa">Bajar Grasa</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="fuerza">Fuerza</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nivel de Experiencia</label>
+                    <select id="nivel">
+                        <option value="principiante">Principiante</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
+                    <label style="margin-bottom: 0;">Equipo Real Disponible (Haz clic para seleccionar)</label>
+                    <input type="file" id="gymPhotoInput" accept="image/*" style="display: none;" onchange="handleGymPhotoUpload(event)">
+                    <button type="button" class="btn btn-secondary" style="font-size: 0.8rem; padding: 5px 10px;" onclick="document.getElementById('gymPhotoInput').click()" id="btnUploadGymPhoto">
+                        📷 Detectar con IA (Foto de Gym)
+                    </button>
+                </div>
+                <div id="visionStatus" style="display: none; margin-bottom: 8px;"></div>
+                <div class="chips-container" id="equipmentChips">
+                    <!-- Se cargan dinámicamente -->
+                </div>
+            </div>
+
+            <button class="btn" style="width: 100%; margin-top: 10px;" onclick="generateRoutine()">
+                ✨ Generar Rutina Semanal con el Agente
+            </button>
+        </div>
+
+        <!-- Panel 2: Adaptaciones en Vivo e Imprevistos -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">2. Adaptaciones en Tiempo Real (Variabilidad)</div>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
+                Simula eventos del día a día. El motor funcional puro reajustará el plan sin reiniciarlo:
+            </p>
+
+            <div class="variability-container">
+                <!-- Grupo 1: Molestias -->
+                <div class="variability-group">
+                    <div class="variability-group-title">Molestias</div>
+                    <div class="variability-grid">
+                        <button class="btn btn-warning" onclick="reportDiscomfort('hombro', 6)">
+                            🩹 Molestia en Hombro
+                        </button>
+                        <button class="btn btn-warning" onclick="reportDiscomfort('rodilla', 6)">
+                            🩹 Molestia en Rodilla
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grupo 2: Ajustes de rendimiento -->
+                <div class="variability-group">
+                    <div class="variability-group-title">Ajustes de rendimiento</div>
+                    <div class="variability-grid">
+                        <button class="btn btn-secondary" onclick="reportDifficulty('muy_facil')">
+                            📈 Sobrecarga (+2.5% Fácil)
+                        </button>
+                        <button class="btn btn-danger" onclick="reportDifficulty('muy_pesado')">
+                            📉 Descarga (-10% Pesado)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grupo 3: Imprevistos -->
+                <div class="variability-group">
+                    <div class="variability-group-title">Imprevistos</div>
+                    <div class="variability-grid">
+                        <button class="btn btn-secondary" onclick="reportTimeCrunch(2, 25)">
+                            ⏱️ Falta de Tiempo (25 min Día 2)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timer-box">
+                <div style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 600;">CRONÓMETRO DE DESCANSO ENTRE SERIES</div>
+                <div class="timer-display" id="timerDisplay">00:00</div>
+                <div class="timer-grid">
+                    <button class="btn btn-timer" onclick="startTimer(120)">⏱️ 2:00</button>
+                    <button class="btn btn-timer" onclick="startTimer(150)">⏱️ 2:30</button>
+                    <button class="btn btn-timer" onclick="startTimer(180)">⏱️ 3:00</button>
+                    <button class="btn btn-timer" onclick="startTimer(210)">⏱️ 3:30</button>
+                    <button class="btn btn-timer" onclick="startTimer(240)">⏱️ 4:00</button>
+                    <button class="btn btn-danger btn-timer" onclick="stopTimer()">⏹️ Detener</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 18px;">
+                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; font-weight: 600;">
+                    HISTORIAL DE EVENTOS INMUTABLES (Event Sourcing)
+                </div>
+                <div class="log-box" id="eventLogs">
+                    <div class="log-item">Esperando primer evento...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel 3: Rutina Generada y Explicación del Agente -->
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">3. Rutina Semanal Activa y Justificación del Agente</div>
+            <span class="badge" id="routineSplitBadge">Sin Rutina</span>
+        </div>
+
+        <div class="agent-bubble" id="agentExplanation">
+            Genera una rutina o haz clic en "Cargar Caso Demo" para ver la justificación contextual del agente.
+        </div>
+
+        <div id="routineContainer">
+            <!-- Días y ejercicios -->
+        </div>
+    </div>
+</div>
+
+    <script src="/static/js/equipo.js"></script>
+    <script src="/static/js/cronometro.js"></script>
+    <script src="/static/js/perfil.js"></script>
+    <script src="/static/js/rutina.js"></script>
+    <script src="/static/js/eventos.js"></script>
+
+</body>
+</html>

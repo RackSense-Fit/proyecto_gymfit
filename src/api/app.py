@@ -6,9 +6,8 @@ from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from src.api.dashboard_html import DASHBOARD_HTML
 from src.api.routers.equipment import router as equipment_router
 from src.api.routers.events import router as events_router
 from src.api.routers.profile import router as profile_router
@@ -17,7 +16,37 @@ from src.api.routers.session import router as session_router
 from src.api.routers.variability import router as variability_router
 
 
-def create_app(static_dir: Path | None = None) -> FastAPI:
+def montar_estaticos(
+    app: FastAPI,
+    static_dir: Path | None = None,
+    exercises_dir: Path | None = None,
+) -> None:
+    """Monta directorios de archivos estáticos (/static y opcionalmente /exercise-images).
+
+    Rutas calculadas relativas a __file__.
+    /exercise-images/ solo se monta si el directorio data/external/free-exercise-db/exercises/ existe.
+    Si no existe, la app arranca igual sin esa ruta.
+    """
+    base_api_dir = Path(__file__).resolve().parent
+    resolved_static_dir = static_dir or (base_api_dir / "static")
+    resolved_static_dir.mkdir(parents=True, exist_ok=True)
+    app.mount("/static", StaticFiles(directory=str(resolved_static_dir)), name="static")
+
+    resolved_exercises_dir = exercises_dir or (
+        base_api_dir.parent.parent / "data" / "external" / "free-exercise-db" / "exercises"
+    )
+    if resolved_exercises_dir.exists() and resolved_exercises_dir.is_dir():
+        app.mount(
+            "/exercise-images",
+            StaticFiles(directory=str(resolved_exercises_dir)),
+            name="exercise-images",
+        )
+
+
+def create_app(
+    static_dir: Path | None = None,
+    exercises_dir: Path | None = None,
+) -> FastAPI:
     """Fábrica pura para crear y configurar la aplicación FastAPI."""
     app = FastAPI(
         title="GymFit Agent API",
@@ -40,10 +69,8 @@ def create_app(static_dir: Path | None = None) -> FastAPI:
         allow_headers=["*"],
     )
 
-    # Montar archivos estáticos (/static) garantizando existencia del directorio
-    resolved_static_dir = static_dir or (Path(__file__).resolve().parent / "static")
-    resolved_static_dir.mkdir(parents=True, exist_ok=True)
-    app.mount("/static", StaticFiles(directory=str(resolved_static_dir)), name="static")
+    # Montar directorios estáticos (/static y opcionalmente /exercise-images)
+    montar_estaticos(app, static_dir=static_dir, exercises_dir=exercises_dir)
 
     # Registrar enrutadores modulares
     app.include_router(profile_router)
@@ -53,15 +80,22 @@ def create_app(static_dir: Path | None = None) -> FastAPI:
     app.include_router(variability_router)
     app.include_router(events_router)
 
-    @app.get("/dashboard", response_class=HTMLResponse, tags=["Interfaz Interactiva"])
-    def get_dashboard() -> HTMLResponse:
-        """Renderiza el dashboard interactivo de prueba para GymFit Agent."""
-        return HTMLResponse(content=DASHBOARD_HTML)
+    default_index = Path(__file__).resolve().parent / "static" / "index.html"
+    index_file = (
+        (static_dir / "index.html")
+        if (static_dir and (static_dir / "index.html").exists())
+        else default_index
+    )
 
-    @app.get("/", response_class=HTMLResponse, tags=["General"])
-    def root() -> HTMLResponse:
+    @app.get("/dashboard", response_class=FileResponse, tags=["Interfaz Interactiva"])
+    def get_dashboard() -> FileResponse:
+        """Renderiza el dashboard interactivo de prueba para GymFit Agent."""
+        return FileResponse(index_file)
+
+    @app.get("/", response_class=FileResponse, tags=["General"])
+    def root() -> FileResponse:
         """Página principal: muestra el dashboard interactivo."""
-        return HTMLResponse(content=DASHBOARD_HTML)
+        return FileResponse(index_file)
 
     @app.get("/health", tags=["General"])
     def health_check() -> dict:
