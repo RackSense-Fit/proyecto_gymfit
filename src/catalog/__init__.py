@@ -10,6 +10,8 @@ from src.catalog.filters import (
     normalize_equipment,
 )
 from src.catalog.loader import (
+    detectable_ids,
+    load_equipment_vocabulary,
     load_exercises,
     load_full_catalog,
     load_level_parameters,
@@ -21,6 +23,8 @@ __all__ = [
     "load_exercises",
     "load_split_templates",
     "load_full_catalog",
+    "load_equipment_vocabulary",
+    "detectable_ids",
     "normalize_equipment",
     "filter_by_equipment",
     "filter_by_level",

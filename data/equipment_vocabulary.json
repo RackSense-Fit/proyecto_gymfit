@@ -1,0 +1,74 @@
+[
+  {
+    "id": "mancuernas",
+    "nombre_es": "Mancuernas",
+    "descripcion_visual": "Pesas cortas manuales con agarre central y cabezas hexagonales, redondas o ajustables en cada extremo, sueltas o colocadas en un soporte.",
+    "detectable": true
+  },
+  {
+    "id": "banco_plano",
+    "nombre_es": "Banco plano",
+    "descripcion_visual": "Banco acolchado con respaldo horizontal fijo o banco ajustable que puede colocarse totalmente horizontal.",
+    "detectable": true
+  },
+  {
+    "id": "banco_inclinado",
+    "nombre_es": "Banco inclinado",
+    "descripcion_visual": "Banco acolchado con respaldo elevado en ángulo o banco ajustable con mecanismo de inclinación.",
+    "detectable": true
+  },
+  {
+    "id": "barra",
+    "nombre_es": "Barra",
+    "descripcion_visual": "Barra metálica larga recta o tipo Z para usar con ambas manos, con o sin discos cargados en los extremos.",
+    "detectable": true
+  },
+  {
+    "id": "barra_dominadas",
+    "nombre_es": "Barra de dominadas",
+    "descripcion_visual": "Barra horizontal fija elevada para colgarse con las manos, montada en rack, jaula, pared o estructura independiente.",
+    "detectable": true
+  },
+  {
+    "id": "polea",
+    "nombre_es": "Polea",
+    "descripcion_visual": "Estación con cable y manija o agarre visible conectado a pesas, incluido el remo bajo en polea. Una torre de placas sin cables visibles NO es polea.",
+    "detectable": true
+  },
+  {
+    "id": "maquina_pecho",
+    "nombre_es": "Máquina de pecho",
+    "descripcion_visual": "Máquina con asiento y respaldo vertical donde se empujan palancas hacia adelante o se cierran al frente para pectoral. Un press de hombro NO es maquina_pecho.",
+    "detectable": true
+  },
+  {
+    "id": "maquina_remo",
+    "nombre_es": "Máquina de remo",
+    "descripcion_visual": "Máquina de palancas con soporte de pecho (con discos o selectorizada) donde se traccionan agarres hacia el torso.",
+    "detectable": true
+  },
+  {
+    "id": "maquina_prensa",
+    "nombre_es": "Máquina de prensa de piernas",
+    "descripcion_visual": "Máquina con asiento inclinado y plataforma amplia para apoyar ambos pies y empujar carga con las piernas.",
+    "detectable": true
+  },
+  {
+    "id": "maquina_extensiones",
+    "nombre_es": "Máquina de extensiones de cuádriceps",
+    "descripcion_visual": "Máquina con asiento y rodillo acolchado inferior sobre los tobillos para extender las rodillas.",
+    "detectable": true
+  },
+  {
+    "id": "maquina_curl_femoral",
+    "nombre_es": "Máquina de curl femoral",
+    "descripcion_visual": "Máquina con rodillo acolchado detrás de los talones o pantorrillas para flexionar las rodillas.",
+    "detectable": true
+  },
+  {
+    "id": "peso_corporal",
+    "nombre_es": "Peso corporal",
+    "descripcion_visual": "Entrenamiento sin equipamiento externo, utilizando únicamente el propio peso del cuerpo.",
+    "detectable": false
+  }
+]

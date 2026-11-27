@@ -6,6 +6,7 @@ from pathlib import Path
 from src.models.catalog import (
     Catalog,
     DailySplitScheme,
+    EquipmentVocabularyItem,
     Exercise,
     LevelParameters,
     SplitTemplate,
@@ -92,6 +93,70 @@ def load_split_templates(filepath: Path | str) -> dict[str, SplitTemplate]:
         )
         splits[split_id] = template
     return splits
+
+
+def load_equipment_vocabulary(
+    filepath: Path | str,
+) -> tuple[EquipmentVocabularyItem, ...]:
+    """Carga y valida el vocabulario de equipo para visión desde un JSON."""
+    path = Path(filepath)
+    with path.open("r", encoding="utf-8") as f:
+        raw_list = json.load(f)
+
+    if not isinstance(raw_list, list):
+        raise ValueError("El vocabulario de equipo debe ser una lista JSON.")
+
+    required_fields = {"id", "nombre_es", "descripcion_visual", "detectable"}
+    items: list[EquipmentVocabularyItem] = []
+    seen_ids: set[str] = set()
+
+    for idx, entry in enumerate(raw_list):
+        if not isinstance(entry, dict):
+            raise ValueError(f"La entrada #{idx} del vocabulario debe ser un objeto JSON.")
+
+        missing = required_fields - entry.keys()
+        if missing:
+            raise ValueError(
+                f"Faltan campos obligatorios en la entrada #{idx}: {sorted(missing)}"
+            )
+
+        item_id = entry["id"]
+        nombre_es = entry["nombre_es"]
+        descripcion_visual = entry["descripcion_visual"]
+        detectable = entry["detectable"]
+
+        if not isinstance(item_id, str) or not item_id.strip():
+            raise ValueError(f"El campo 'id' en la entrada #{idx} debe ser texto no vacío.")
+        if not isinstance(nombre_es, str) or not nombre_es.strip():
+            raise ValueError(f"El campo 'nombre_es' en '{item_id}' debe ser texto no vacío.")
+        if not isinstance(descripcion_visual, str) or not descripcion_visual.strip():
+            raise ValueError(
+                f"El campo 'descripcion_visual' en '{item_id}' debe ser texto no vacío."
+            )
+        if not isinstance(detectable, bool):
+            raise ValueError(
+                f"El campo 'detectable' en '{item_id}' debe ser booleano (true/false)."
+            )
+
+        if item_id in seen_ids:
+            raise ValueError(f"ID de equipo duplicado en el vocabulario: '{item_id}'.")
+        seen_ids.add(item_id)
+
+        items.append(
+            EquipmentVocabularyItem(
+                id=item_id,
+                nombre_es=nombre_es,
+                descripcion_visual=descripcion_visual,
+                detectable=detectable,
+            )
+        )
+
+    return tuple(items)
+
+
+def detectable_ids(vocabulario: tuple[EquipmentVocabularyItem, ...]) -> tuple[str, ...]:
+    """Función pura: extrae la tupla de IDs de equipo detectables visualmente."""
+    return tuple(item.id for item in vocabulario if item.detectable)
 
 
 def load_full_catalog(data_dir: Path | str) -> Catalog:

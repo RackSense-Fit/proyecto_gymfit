@@ -65,6 +65,15 @@ class SplitTemplate:
 
 
 @dataclass(frozen=True)
+class EquipmentVocabularyItem:
+    """Metadatos de visión por computadora para un tipo de equipo del catálogo."""
+    id: str
+    nombre_es: str
+    descripcion_visual: str
+    detectable: bool
+
+
+@dataclass(frozen=True)
 class Catalog:
     """Contenedor global e inmutable de ambas tablas de catálogo."""
     tabla_a_niveles: dict[LevelEnum, LevelParameters]
