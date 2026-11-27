@@ -1,0 +1,1 @@
+Analiza esta foto de gimnasio y devuelve el inventario estructurado según las reglas y el vocabulario proporcionado.
