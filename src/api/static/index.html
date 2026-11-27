@@ -21,7 +21,15 @@
         </div>
     </header>
 
-    <div class="grid-2">
+    <nav class="nav-tabs" aria-label="Navegación principal">
+        <a href="#equipo">🏋️ Equipo</a>
+        <a href="#rutina">📋 Rutina</a>
+        <a href="#entrenar">⏱️ Entrenar</a>
+        <a href="#calendario">📅 Calendario</a>
+    </nav>
+
+    <main class="main-content">
+    <section data-seccion="equipo">
         <!-- Panel 1: Perfil y Equipo -->
         <div class="card">
             <div class="card-header">
@@ -97,6 +105,9 @@
             </button>
         </div>
 
+    </section>
+
+    <section data-seccion="entrenar">
         <!-- Panel 2: Adaptaciones en Vivo e Imprevistos -->
         <div class="card">
             <div class="card-header">
@@ -167,8 +178,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
+    <section data-seccion="rutina">
     <!-- Panel 3: Rutina Generada y Explicación del Agente -->
     <div class="card">
         <div class="card-header">
@@ -184,8 +196,22 @@
             <!-- Días y ejercicios -->
         </div>
     </div>
+    </section>
+
+    <section data-seccion="calendario">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">📅 Calendario de Entrenamiento</div>
+            </div>
+            <p style="color: var(--text-secondary); padding: 20px 0; text-align: center;">
+                Próximamente: aquí podrás ver tu plan semanal en formato calendario.
+            </p>
+        </div>
+    </section>
+    </main>
 </div>
 
+    <script src="/static/js/nav.js"></script>
     <script src="/static/js/equipo.js"></script>
     <script src="/static/js/cronometro.js"></script>
     <script src="/static/js/perfil.js"></script>

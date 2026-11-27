@@ -4,6 +4,7 @@ async function generateRoutine() {
     const res = await fetch("/api/routine/generate", { method: "POST" });
     if (res.ok) {
         await fetchState();
+        if (typeof irASeccion === "function") { irASeccion("rutina"); }
     } else {
         const err = await res.json();
         alert("Error: " + (err.detail || "No se pudo generar la rutina"));
